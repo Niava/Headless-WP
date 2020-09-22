@@ -3,6 +3,7 @@ module.exports = {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteUrl: "http://headlesswpt2.wpengine.com",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -31,7 +32,7 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         // I have created a dummy site for us to use with the plugins we discussed
-        baseUrl: "clock:8888",
+        baseUrl: "headlesswpt2.wpengine.com",
         protocol: "http",
         hostingWPCOM: false,
         // We will be using some advanced custom fields
@@ -40,7 +41,7 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
-          sourceUrl: "http://clock:8888",
+          sourceUrl: "http://headlesswpt2.wpengine.com",
           replacementUrl: "https://localhost:8000",
         },
         // Set how many simultaneous requests are sent at once.
