@@ -17,7 +17,7 @@ const BlogPostTemplate = ({ data }) => (
     <Img
       fluid={data.wordpressPost.acf.banner_image.localFile.childImageSharp.sizes}
       alt={data.wordpressPost.title}
-      style={{ maxHeight: 450 }}
+      style={{ maxHeight: '100%', position: 'absolute', width: '50px' }}
     />
     <div
       style={{ marginTop: 20 }}

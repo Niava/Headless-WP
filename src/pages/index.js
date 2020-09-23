@@ -14,6 +14,7 @@ const IndexPage = ({ data }) => (
           <Link
             to={`/post/${post.node.slug}`}
             style={{ display: "flex", color: "black", textDecoration: "none" }}
+            className={`post_${post.node.slug}`}
           >
             <Img
               sizes={post.node.acf.banner_image.localFile.childImageSharp.sizes}
