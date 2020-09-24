@@ -32,7 +32,7 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         // I have created a dummy site for us to use with the plugins we discussed
-        baseUrl: "headlesswpt2.wpengine.com",
+        baseUrl: "mmgatsby:8889",
         protocol: "http",
         hostingWPCOM: false,
         // We will be using some advanced custom fields
@@ -41,7 +41,7 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
-          sourceUrl: "http://headlesswpt2.wpengine.com",
+          sourceUrl: "http://mmgatsby:8889",
           replacementUrl: "https://localhost:8000",
         },
         // Set how many simultaneous requests are sent at once.
@@ -54,6 +54,7 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
+          "**/our_team",
           "**/*/*/menus", // <== Menu api endpoint
           "**/*/*/menu-locations", // <== Menu api endpoint
         ],

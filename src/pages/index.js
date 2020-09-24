@@ -9,27 +9,27 @@ const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <ul style={{ listStyle: "none" }}>
-      {data.allWordpressPost.edges.map(post => (
+      {data.allWordpressAcfOurTeam.edges.map(post => (
         <li style={{ padding: "20px 0", borderBottom: "1px solid #ccc" }}>
           <Link
-            to={`/post/${post.node.slug}`}
+            to={`/post/${post.node.acf.photo_gallery.source_url}`}
             style={{ display: "flex", color: "black", textDecoration: "none" }}
-            className={`post_${post.node.slug}`}
+            className={`post_${post.node.acf.photo_gallery.source_url}`}
           >
             <Img
-              sizes={post.node.acf.banner_image.localFile.childImageSharp.sizes}
+              sizes={post.node.acf.photo_gallery.source_url}
               alt={post.node.title}
               style={{ width: "25%", marginRight: 20 }}
             />
             <div style={{ width: "75%" }}>
               <h3
-                dangerouslySetInnerHTML={{ __html: post.node.title }}
+                dangerouslySetInnerHTML={{ __html: post.node.acf.team_nickname }}
                 style={{ marginBottom: 0 }}
               />
               <p style={{ margin: 0, color: "grey" }}>
-                Written by {post.node.author.name} on {post.node.date}
+                {post.node.acf.team_nickname} joined on {post.node.acf.joined_since}
               </p>
-              <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+              <div dangerouslySetInnerHTML={{ __html: post.node.acf.team_position }} />
             </div>
           </Link>
         </li>
@@ -42,26 +42,17 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allWordpressPost {
+    allWordpressAcfOurTeam {
       edges {
         node {
-          title
-          excerpt
-          slug
-          author {
-            name
-          }
-          date(formatString: "MMMM DD, YYYY")
           acf {
-            banner_image {
-              localFile {
-                childImageSharp {
-                  sizes(maxWidth: 600) {
-                    ...GatsbyImageSharpSizes
-                  }
-                }
-              }
+            joined_since
+            photo_gallery {
+              source_url
             }
+            team_nickname
+            team_position
+            teamnumber
           }
         }
       }
